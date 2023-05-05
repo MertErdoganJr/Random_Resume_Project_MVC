@@ -11,12 +11,16 @@ namespace MvcCvProject.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TblEducation
     {
         public int ID { get; set; }
+        [Required(ErrorMessage ="Bu Alan Boþ Býrakýlamaz")]
         public string Title { get; set; }
         public string SecondTitle { get; set; }
+
+        [Required(ErrorMessage = "Bu Alan Boþ Býrakýlamaz")]
         public string Description { get; set; }
         public string SecondTitle2 { get; set; }
         public string TotalScore { get; set; }
