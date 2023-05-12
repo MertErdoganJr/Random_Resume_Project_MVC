@@ -33,5 +33,39 @@ namespace MvcCvProject.Controllers
             repo.TAdd(p);
             return RedirectToAction("Index");
         }
+
+        public ActionResult DeleteEducation(int id)
+        {
+            var education = repo.Find(x => x.ID == id);
+            repo.TDelete(education);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult UpdateEducation(int id)
+        {
+            var education = repo.Find(x => x.ID == id);
+            return View(education);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateEducation(TblEducation t)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("UpdateEducation");
+            }
+            else
+            {
+                var education = repo.Find(x => x.ID == t.ID);
+                education.Title = t.Title;
+                education.SecondTitle = t.SecondTitle;
+                education.SecondTitle2 = t.SecondTitle2;
+                education.Date = t.Date;
+                education.TotalScore = t.TotalScore;
+                repo.TUpdate(education);
+                return RedirectToAction("Index");
+            }
+        }
     }
 }
