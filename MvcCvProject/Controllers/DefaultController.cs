@@ -7,6 +7,7 @@ using MvcCvProject.Models.Entity;
 
 namespace MvcCvProject.Controllers
 {
+    [AllowAnonymous]
     public class DefaultController : Controller
     {
         DbCvEntities db = new DbCvEntities();
@@ -18,7 +19,7 @@ namespace MvcCvProject.Controllers
 
         public PartialViewResult SocialMedia()
         {
-            var values = db.TblSocialMedia.ToList();
+            var values = db.TblSocialMedia.Where(x=>x.Status ==true).ToList();
             return PartialView(values);
         }
         public PartialViewResult Experience()

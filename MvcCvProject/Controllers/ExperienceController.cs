@@ -9,6 +9,7 @@ using System.Linq.Expressions;
 
 namespace MvcCvProject.Controllers
 {
+    [Authorize]
     public class ExperienceController : Controller
     {
         EcperienceRepository repo = new EcperienceRepository();
